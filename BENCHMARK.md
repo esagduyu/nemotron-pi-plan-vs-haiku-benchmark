@@ -1,6 +1,6 @@
 # Nemotron 3.5 Lightning (local, via pi) × planning strategies vs Claude Haiku 5.5
 
-**Date:** 2026-10-15 (runs 00:00–02:30 PDT, unattended)
+**Date:** 2026-10-15 (Nemotron runs 00:00–02:30 PDT, unattended; Qwen follow-up 07:58–08:45 PDT)
 **Predecessor:** [qwen-pi-plan-vs-haiku-benchmark](https://github.com/esagduyu/qwen-pi-plan-vs-haiku-benchmark) (v1, 2026-05-01) — same spec, same `plan-first` skill, same hardware.
 
 ## Questions
@@ -140,7 +140,41 @@ Every timeout came from the same pattern: a successful `pytest`, then cleanup co
 | Code that never leaves the LAN, best quality | **Opus plans → Nemotron executes** (median 19/19, ~4 min, ~$0.14/plan; only the spec and plan leave the box). Budget for an occasional bad run and review the output. |
 | Fully local, no cloud at all | **Nemotron without planning (A)** or **with the skill inlined (B2)** — both ~16/19, ~5 min. Don't use B: plan-first as a skill file gives nothing with Nemotron and risks long loops. |
 
-Versus v1's Qwen 3.6 + plan-first (17/19, 3.3 min, one run), Nemotron 3.5 Lightning is **not a clear upgrade for this harness and task**. It's similar on quality, worse at following a skill workflow, and more loop-prone. A same-harness Qwen re-run (pi 1.2, b11641, checkpoints, 3 reps) is the obvious next experiment and was *not* done here.
+Versus v1's Qwen 3.6 + plan-first (17/19, 3.3 min, one run), Nemotron 3.5 Lightning is **not a clear upgrade for this harness and task**. It's similar on quality, worse at following a skill workflow, and more loop-prone. The same-harness Qwen re-run below confirms it: Qwen3.6 is better on this task.
+
+## Follow-up: Qwen3.6-35B-A3B on the same harness
+
+Run with [`run_qwen_arms.sh`](run_qwen_arms.sh), a copy of `run_nemotron_arms.sh` with only the model and server changed:
+
+- **Model:** v1's `unsloth/Qwen3.6-35B-A3B-GGUF` **UD-Q4_K_XL** (22.4 GB).
+- **Server:** the same llama-server flags as above — thinking off, `--ctx-checkpoints 32 --checkpoint-min-step 0`, same context, KV quantization and `--fit`. Sampling is v1's Qwen settings (`--temp 0.6 --top-p 0.95 --top-k 20`). Measured ~36 tok/s generation; 92–98 % of prompt tokens served from cache.
+- **Everything else identical:** spec, skill, prompts, isolated pi 1.2.0 config, 25-min phase timeout, server restart per run, 3 reps. **QC executes the same three Opus plans as C**, so C vs QC isolates the executor.
+
+| Arm | Setup | Score per run (/19) | Mean | Median wall | Mean turns | Timeouts |
+|---|---|---|---|---|---|---|
+| **QA** | Qwen3.6, no planning | 19, 18, 19 | **18.7** | 3.6 min | 15 | 0 |
+| **QB** | Qwen3.6 plans (skill file) → Qwen3.6 | 18, 19, 18 | **18.3** | 4.0 min | 30 | 0 |
+| **QB2** | Qwen3.6 plans (skill inlined) → Qwen3.6 | 19, 18, 18 | **18.3** | 2.8 min | 19 | 0 |
+| **QC** | **Opus 5.5 plans → Qwen3.6** | **19, 19, 19** | **19.0** | 4.5 min | 23 | 0 |
+
+Side by side with Nemotron (mean /19): A 16.0 → QA 18.7 · B 15.7 → QB 18.3 · B2 16.3 → QB2 18.3 · C 16.7 → QC 19.0.
+
+| Check | QA | QB | QB2 | QC |
+|---|---|---|---|---|
+| `list` format exactly `[ID] [x\|·] title` | 3/3 | 3/3 | 3/3 | 3/3 |
+| IDs never reused after removing the *highest* ID | 2/3 | 1/3 | 1/3 | 3/3 |
+| Everything else (17 checks) | ✅ | ✅ | ✅ | ✅ |
+
+What this shows:
+
+1. **The executor matters more than the planner.** With identical Opus plans, Nemotron scored 19, 12, 19 and Qwen 19, 19, 19. With no plan, Qwen (18.7) already beats every Nemotron arm, including Opus-planned Nemotron's mean.
+2. **Qwen reads the spec literally** and got the bracketed list format right in all 12 runs. Its single recurring bug is `max(id)+1` ID generation (5 of 9 self-planned runs) — the same bug Nemotron has and v1's plan-first Qwen had.
+3. **Qwen follows plan-first as a skill file.** In all 3 QB runs it opened `plan-first.md`, wrote only `TODO.md` in phase 1 and stopped (44–60 s), then executed in phase 2. Nemotron never did any of this.
+4. **Self-planning still adds nothing.** Qwen's own plans restate the spec ("auto-incrementing ID"); none of the six makes the `next_id` decision. All three Opus plans do, and all three Opus-planned Qwen programs implement it.
+5. **No loops.** 15–30 turns per run on average and no timeouts, vs 38–305 for Nemotron.
+6. **The task saturates.** Haiku 5.5, Opus → Qwen and plain Qwen all score 18–19. The remaining signal is one edge case, so a harder task is needed to separate these setups further.
+
+**Updated verdict:** for this harness and task, **Qwen3.6-35B-A3B is the better local model**; Nemotron 3.5 Lightning is not an upgrade. Code that must stay on the LAN → **Opus plans → Qwen3.6** (19/19 every run, ~4.5 min). Fully offline → **plain Qwen3.6** (~18.7/19, ~3.6 min). Fastest and cheapest overall is still Haiku 5.5.
 
 ## Caveats
 
@@ -157,6 +191,8 @@ Versus v1's Qwen 3.6 + plan-first (17/19, 3.3 min, one run), Nemotron 3.5 Lightn
   | Median | — | — | — | 17 | — |
 
   On that basis C's advantage survives **only in the median and in the ID check**. Its mean falls below A's because of C-r2. Read the planner effect as "fixes design errors when execution goes right", not as a uniform lift.
+- **Qwen vs Nemotron isn't perfectly matched.** Qwen's quant is larger (UD-Q4_K_XL 22.4 GB vs IQ4_XS 18.9 GB), each used its own recommended sampling, and the Qwen arms ran the next morning (same box, builds and harness).
+- **Runs were not sandboxed from each other.** In **B2-r2** Nemotron searched the benchmark folder while planning and read another run's finished `todo.py`, `TODO.md` and tests (B-r3). Both scored 16/19; the run is kept in the tables, and B2's mean without it is 16.5. Three Qwen runs (QB-r1, all QC) ran a `find` for `SPEC.md`/`TODO.md` across the folder but read nothing from other runs. No Claude run left its directory. A future harness should run each agent in an isolated directory or container.
 - **Grader strictness.** The ID check removes the *highest* ID, which v1's manual check didn't. It is stricter than v1 and correct per the spec's "never reused even after `rm`".
 
 ## Reproducing

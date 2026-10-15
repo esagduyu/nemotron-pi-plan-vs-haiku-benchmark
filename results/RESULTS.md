@@ -5,6 +5,10 @@
 | **B2** | Nemotron plans (skill inlined in prompt) → Nemotron executes | 3 | 18, 16, 15 | **16.3** | 4.7 min | 57.3 | 0 | $0 (local) |
 | **C** | Opus 5.5 plans → Nemotron executes | 3 | 19, 12, 19 | **16.7** | 4.4 min | 47.7 | 0 | $0.43 |
 | **D** | Haiku 5.5, no planning | 3 | 19, 19, 19 | **19** | 38 s | 8 | 0 | $0.03 |
+| **QA** | Qwen3.6, no planning | 3 | 19, 18, 19 | **18.7** | 3.6 min | 14.7 | 0 | $0 (local) |
+| **QB** | Qwen3.6 plans (skill file) → Qwen3.6 executes | 3 | 18, 19, 18 | **18.3** | 4.0 min | 29.7 | 0 | $0 (local) |
+| **QB2** | Qwen3.6 plans (skill inlined in prompt) → Qwen3.6 executes | 3 | 19, 18, 18 | **18.3** | 2.8 min | 19.3 | 0 | $0 (local) |
+| **QC** | Opus 5.5 plans (same plans as C) → Qwen3.6 executes | 3 | 19, 19, 19 | **19** | 4.5 min | 22.7 | 0 | $0.43 |
 
 ### Per run
 
@@ -25,3 +29,15 @@
 | haiku-r1 | 19/19 | 42 s | 7 | 7,396 | 15 | — |
 | haiku-r2 | 19/19 | 38 s | 8 | 9,316 | 11 | — |
 | haiku-r3 | 19/19 | 38 s | 9 | 9,189 | 11 | — |
+| qwen-r1 | 19/19 | 5.1 min | 19 | 10,794 | 9 | — |
+| qwen-r2 | 18/19 | 86 s | 8 | 3,001 | 9 | IDs never reused after rm |
+| qwen-r3 | 19/19 | 3.6 min | 17 | 7,850 | 4 | — |
+| qwen-plan-r1 | 18/19 | 4.0 min | 27 | 8,021 | 8 | IDs never reused after rm |
+| qwen-plan-r2 | 19/19 | 6.1 min | 40 | 12,420 | 7 | — |
+| qwen-plan-r3 | 18/19 | 3.1 min | 22 | 6,295 | 4 | IDs never reused after rm |
+| qwen-planinline-r1 | 19/19 | 4.7 min | 27 | 9,442 | 6 | — |
+| qwen-planinline-r2 | 18/19 | 2.8 min | 13 | 5,391 | 11 | IDs never reused after rm |
+| qwen-planinline-r3 | 18/19 | 2.8 min | 18 | 5,622 | 5 | IDs never reused after rm |
+| opusplan-qwen-r1 | 19/19 | 4.5 min | 18 | 7,896 | 13 | — |
+| opusplan-qwen-r2 | 19/19 | 3.4 min | 19 | 5,649 | 8 | — |
+| opusplan-qwen-r3 | 19/19 | 4.9 min | 31 | 8,762 | 14 | — |

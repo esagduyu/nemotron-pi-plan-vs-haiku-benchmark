@@ -18,3 +18,23 @@ nemotron-planinline-r2:exec exit=0 wall=170.9s
 nemotron-planinline-r3:plan exit=0 wall=31.6s
 nemotron-planinline-r3:exec exit=0 wall=250.8s
 ALL_NEMOTRON_ARMS_DONE
+=== qwen arms start 2026-10-15T07:58:07-07:00
+qwen-r1 exit=0 wall=305.6s
+qwen-plan-r1:plan exit=0 wall=59.9s
+qwen-plan-r1:exec exit=0 wall=183.1s
+qwen-planinline-r1:plan exit=0 wall=37.2s
+qwen-planinline-r1:exec exit=0 wall=245.9s
+opusplan-qwen-r1:exec exit=0 wall=235.7s
+qwen-r2 exit=0 wall=85.7s
+qwen-plan-r2:plan exit=0 wall=44.7s
+qwen-plan-r2:exec exit=0 wall=321.6s
+qwen-planinline-r2:plan exit=0 wall=41.8s
+qwen-planinline-r2:exec exit=0 wall=124.5s
+opusplan-qwen-r2:exec exit=0 wall=177.7s
+qwen-r3 exit=0 wall=217.3s
+qwen-plan-r3:plan exit=0 wall=43.5s
+qwen-plan-r3:exec exit=0 wall=144.0s
+qwen-planinline-r3:plan exit=0 wall=27.6s
+qwen-planinline-r3:exec exit=0 wall=137.9s
+opusplan-qwen-r3:exec exit=0 wall=266.0s
+ALL_QWEN_ARMS_DONE

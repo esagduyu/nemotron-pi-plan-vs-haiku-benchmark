@@ -361,5 +361,278 @@
         "timeouts": 0
       }
     ]
+  },
+  {
+    "arm": "QA",
+    "label": "Qwen3.6, no planning",
+    "runs": 3,
+    "scores": [
+      19,
+      18,
+      19
+    ],
+    "mean_score": 18.7,
+    "median_wall_s": 217.3,
+    "mean_turns": 14.7,
+    "timeouts": 0,
+    "spend_usd": 0,
+    "runs_detail": [
+      {
+        "run": "qwen-r1",
+        "score": 19,
+        "total": 19,
+        "tests": 9,
+        "loc": 148,
+        "failed": [],
+        "wall_s": 305.6,
+        "turns": 19,
+        "out_tok": 10794,
+        "cost": 0.0,
+        "timeouts": 0
+      },
+      {
+        "run": "qwen-r2",
+        "score": 18,
+        "total": 19,
+        "tests": 9,
+        "loc": 161,
+        "failed": [
+          "IDs never reused after rm"
+        ],
+        "wall_s": 85.7,
+        "turns": 8,
+        "out_tok": 3001,
+        "cost": 0.0,
+        "timeouts": 0
+      },
+      {
+        "run": "qwen-r3",
+        "score": 19,
+        "total": 19,
+        "tests": 4,
+        "loc": 149,
+        "failed": [],
+        "wall_s": 217.3,
+        "turns": 17,
+        "out_tok": 7850,
+        "cost": 0.0,
+        "timeouts": 0
+      }
+    ]
+  },
+  {
+    "arm": "QB",
+    "label": "Qwen3.6 plans (skill file) \u2192 Qwen3.6 executes",
+    "runs": 3,
+    "scores": [
+      18,
+      19,
+      18
+    ],
+    "mean_score": 18.3,
+    "median_wall_s": 243.0,
+    "mean_turns": 29.7,
+    "timeouts": 0,
+    "spend_usd": 0,
+    "runs_detail": [
+      {
+        "run": "qwen-plan-r1",
+        "score": 18,
+        "total": 19,
+        "tests": 8,
+        "loc": 134,
+        "failed": [
+          "IDs never reused after rm"
+        ],
+        "wall_s": 243.0,
+        "plan_wall_s": 59.9,
+        "turns": 27,
+        "plan_turns": 6,
+        "out_tok": 8021,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": true,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      },
+      {
+        "run": "qwen-plan-r2",
+        "score": 19,
+        "total": 19,
+        "tests": 7,
+        "loc": 149,
+        "failed": [],
+        "wall_s": 366.3,
+        "plan_wall_s": 44.7,
+        "turns": 40,
+        "plan_turns": 4,
+        "out_tok": 12420,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": true,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      },
+      {
+        "run": "qwen-plan-r3",
+        "score": 18,
+        "total": 19,
+        "tests": 4,
+        "loc": 122,
+        "failed": [
+          "IDs never reused after rm"
+        ],
+        "wall_s": 187.5,
+        "plan_wall_s": 43.5,
+        "turns": 22,
+        "plan_turns": 4,
+        "out_tok": 6295,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": true,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      }
+    ]
+  },
+  {
+    "arm": "QB2",
+    "label": "Qwen3.6 plans (skill inlined in prompt) \u2192 Qwen3.6 executes",
+    "runs": 3,
+    "scores": [
+      19,
+      18,
+      18
+    ],
+    "mean_score": 18.3,
+    "median_wall_s": 166.3,
+    "mean_turns": 19.3,
+    "timeouts": 0,
+    "spend_usd": 0,
+    "runs_detail": [
+      {
+        "run": "qwen-planinline-r1",
+        "score": 19,
+        "total": 19,
+        "tests": 6,
+        "loc": 148,
+        "failed": [],
+        "wall_s": 283.1,
+        "plan_wall_s": 37.2,
+        "turns": 27,
+        "plan_turns": 3,
+        "out_tok": 9442,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": false,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      },
+      {
+        "run": "qwen-planinline-r2",
+        "score": 18,
+        "total": 19,
+        "tests": 11,
+        "loc": 136,
+        "failed": [
+          "IDs never reused after rm"
+        ],
+        "wall_s": 166.3,
+        "plan_wall_s": 41.8,
+        "turns": 13,
+        "plan_turns": 3,
+        "out_tok": 5391,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": false,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      },
+      {
+        "run": "qwen-planinline-r3",
+        "score": 18,
+        "total": 19,
+        "tests": 5,
+        "loc": 152,
+        "failed": [
+          "IDs never reused after rm"
+        ],
+        "wall_s": 165.5,
+        "plan_wall_s": 27.6,
+        "turns": 18,
+        "plan_turns": 3,
+        "out_tok": 5622,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": false,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      }
+    ]
+  },
+  {
+    "arm": "QC",
+    "label": "Opus 5.5 plans (same plans as C) \u2192 Qwen3.6 executes",
+    "runs": 3,
+    "scores": [
+      19,
+      19,
+      19
+    ],
+    "mean_score": 19,
+    "median_wall_s": 268.7,
+    "mean_turns": 22.7,
+    "timeouts": 0,
+    "spend_usd": 0.426,
+    "runs_detail": [
+      {
+        "run": "opusplan-qwen-r1",
+        "score": 19,
+        "total": 19,
+        "tests": 13,
+        "loc": 206,
+        "failed": [],
+        "wall_s": 268.7,
+        "plan_wall_s": 33.0,
+        "turns": 18,
+        "plan_turns": 3,
+        "out_tok": 7896,
+        "cost": 0.1562868,
+        "timeouts": 0,
+        "todo_checked": "2/26"
+      },
+      {
+        "run": "opusplan-qwen-r2",
+        "score": 19,
+        "total": 19,
+        "tests": 8,
+        "loc": 167,
+        "failed": [],
+        "wall_s": 205.0,
+        "plan_wall_s": 27.3,
+        "turns": 19,
+        "plan_turns": 3,
+        "out_tok": 5649,
+        "cost": 0.13540620000000003,
+        "timeouts": 0,
+        "todo_checked": "25/25"
+      },
+      {
+        "run": "opusplan-qwen-r3",
+        "score": 19,
+        "total": 19,
+        "tests": 14,
+        "loc": 181,
+        "failed": [],
+        "wall_s": 296.4,
+        "plan_wall_s": 30.4,
+        "turns": 31,
+        "plan_turns": 3,
+        "out_tok": 8762,
+        "cost": 0.1344718,
+        "timeouts": 0,
+        "todo_checked": "0/21"
+      }
+    ]
   }
 ]

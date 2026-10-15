@@ -21,6 +21,11 @@ ARMS = [
     ("B2", "nemotron-planinline", "Nemotron plans (skill inlined in prompt) → Nemotron executes"),
     ("C", "opusplan-nemotron", "Opus 5.5 plans → Nemotron executes"),
     ("D", "haiku", "Haiku 5.5, no planning"),
+    # follow-up: Qwen3.6-35B-A3B on the same harness (run_qwen_arms.sh); QC reuses arm C's Opus plans
+    ("QA", "qwen", "Qwen3.6, no planning"),
+    ("QB", "qwen-plan", "Qwen3.6 plans (skill file) → Qwen3.6 executes"),
+    ("QB2", "qwen-planinline", "Qwen3.6 plans (skill inlined in prompt) → Qwen3.6 executes"),
+    ("QC", "opusplan-qwen", "Opus 5.5 plans (same plans as C) → Qwen3.6 executes"),
 ]
 
 
@@ -56,7 +61,7 @@ def run_record(prefix, n, grades, walls, exits):
     if prefix == "haiku":
         m = metrics(LOGS / f"{run}.jsonl")
         rec.update(wall_s=m["duration_s"], turns=m["turns"], out_tok=m["output_tokens"], cost=m["cost_usd"], timeouts=0)
-    elif prefix == "opusplan-nemotron":
+    elif prefix.startswith("opusplan-"):
         plan = metrics(LOGS / f"opusplan-r{n}.jsonl")
         ex = metrics(LOGS / f"{run}.jsonl")
         rec.update(wall_s=round(plan["duration_s"] + walls[run]["exec"], 1), plan_wall_s=plan["duration_s"],
@@ -67,7 +72,7 @@ def run_record(prefix, n, grades, walls, exits):
         if todo.exists():
             t = todo.read_text()
             rec["todo_checked"] = f"{t.count('[x]')}/{t.count('[x]') + t.count('[ ]')}"
-    elif prefix in ("nemotron-plan", "nemotron-planinline"):
+    elif prefix.endswith(("-plan", "-planinline")):
         p1 = metrics(LOGS / f"{run}-phase1.jsonl")
         p2 = metrics(LOGS / f"{run}-phase2.jsonl")
         both = add(p1, p2)

@@ -47,3 +47,20 @@
         ✗ clear removes done todos only
         ✗ schema {id:int, title:str, done:bool} — unreadable: FileNotFoundError
  19/19  runs/opusplan-nemotron-r3  tests=8 loc=214
+ 19/19  runs/opusplan-qwen-r1  tests=13 loc=206
+ 19/19  runs/opusplan-qwen-r2  tests=8 loc=167
+ 19/19  runs/opusplan-qwen-r3  tests=14 loc=181
+ 19/19  runs/qwen-planinline-r1  tests=6 loc=148
+ 18/19  runs/qwen-planinline-r2  tests=11 loc=136
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 18/19  runs/qwen-planinline-r3  tests=5 loc=152
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 18/19  runs/qwen-plan-r1  tests=8 loc=134
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 19/19  runs/qwen-plan-r2  tests=7 loc=149
+ 18/19  runs/qwen-plan-r3  tests=4 loc=122
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 19/19  runs/qwen-r1  tests=9 loc=148
+ 18/19  runs/qwen-r2  tests=9 loc=161
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 19/19  runs/qwen-r3  tests=4 loc=149

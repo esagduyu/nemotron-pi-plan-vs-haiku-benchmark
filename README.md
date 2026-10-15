@@ -1,6 +1,6 @@
 # Nemotron 3.5 Lightning (local, via pi) × planning strategies vs Claude Haiku 5.5
 
-v2 of [qwen-pi-plan-vs-haiku-benchmark](https://github.com/esagduyu/qwen-pi-plan-vs-haiku-benchmark): the same agentic coding task on a single RTX 2080 Ti, now with **NVIDIA Nemotron 3.5 Lightning 30B-A3B** as the local model. It asks whether planning helps, and whether it matters **who writes the plan**.
+v2 of [qwen-pi-plan-vs-haiku-benchmark](https://github.com/esagduyu/qwen-pi-plan-vs-haiku-benchmark): the same agentic coding task on a single RTX 2080 Ti, now with **NVIDIA Nemotron 3.5 Lightning 30B-A3B** as the local model. It asks whether planning helps, and whether it matters **who writes the plan**. A follow-up re-ran **Qwen3.6-35B-A3B** (v1's local model) through the identical harness for an apples-to-apples comparison.
 
 | Arm | Planner | Executor |
 |---|---|---|
@@ -9,6 +9,7 @@ v2 of [qwen-pi-plan-vs-haiku-benchmark](https://github.com/esagduyu/qwen-pi-plan
 | **B2** | Nemotron, `plan-first` skill pasted into the prompt | Nemotron |
 | **C** | **Claude Opus 5.5** | Nemotron |
 | **D** | — | **Claude Haiku 5.5** |
+| **QA / QB / QB2 / QC** | as A / B / B2 / C (QC reuses C's three Opus plans) | **Qwen3.6-35B-A3B** (local) |
 
 Each arm got the same [spec](spec/SPEC.md) (a Python CLI todo app with JSON persistence, error handling, pytest tests and a README) and ran **3 times**. Output was scored by an automated [19-check grader](grade.py).
 
@@ -38,7 +39,26 @@ Each arm got the same [spec](spec/SPEC.md) (a Python CLI todo app with JSON pers
 - Plain Nemotron (A or B2) if nothing may leave the box.
 - Avoid plan-first-as-a-file with Nemotron.
 
-Nemotron isn't a clear upgrade over v1's Qwen 3.6 + plan-first on this harness. A same-harness Qwen re-run is the obvious next step.
+## Follow-up: Qwen3.6 on the same harness
+
+Same spec, skill, prompts, pi config, timeouts, server flags (thinking off, ctx checkpoints) and the **same three Opus plans**. Only the model changed: v1's Unsloth `Qwen3.6-35B-A3B-UD-Q4_K_XL` with v1's sampling. Script: [`run_qwen_arms.sh`](run_qwen_arms.sh).
+
+| | **QA** Qwen | **QB** +plan-first (file) | **QB2** +plan-first (inline) | **QC** Opus plans → Qwen |
+|---|---|---|---|---|
+| Score per run (/19) | 19, 18, 19 | 18, 19, 18 | 19, 18, 18 | **19, 19, 19** |
+| Mean | 18.7 | 18.3 | 18.3 | **19.0** |
+| Median wall time | 3.6 min | 4.0 min | 2.8 min | 4.5 min |
+| Mean turns | 15 | 30 | 19 | 23 |
+| 25-min timeouts | 0 | 0 | 0 | 0 |
+
+- **Qwen3.6 beats Nemotron in every arm** — 18.3–19.0 vs 15.7–16.7 — in far fewer turns (15–30 per run vs 38–305) and with no loops.
+- **Its only miss is ID reuse** (`max(id)+1`), in 5 of 9 self-planned runs. It always got the bracketed list format right, which Nemotron missed in 9 of 12 runs.
+- **Qwen follows the skill-file protocol**: in all 3 QB runs it opened `plan-first.md`, wrote only `TODO.md` in phase 1 and stopped — the workflow Nemotron never followed.
+- **Self-planning adds nothing on this task**; Qwen's own plans restate the spec ("auto-incrementing ID") just like Nemotron's.
+- **Opus plans → Qwen is 19/19 every run**, matching Haiku 5.5 on score (at ~4.5 min instead of 38 s). The plans' explicit `next_id` decision is exactly what closes Qwen's one gap.
+- Qwen + plan-first scored 17/19 on v1's artifacts (one run, older llama.cpp and pi) and averages 18.3 here.
+
+**Updated verdict:** this task now saturates — Haiku, Opus→Qwen and plain Qwen all sit at 18–19. **Qwen3.6 is the better local model here**, and Nemotron 3.5 Lightning is not an upgrade on it. For code that must stay on the LAN, use **Opus plans → Qwen3.6 executes**; for fully offline work, plain Qwen3.6 (QA). A harder task is needed to separate the models further.
 
 Full analysis, per-check failure table, caveats: **[`BENCHMARK.md`](BENCHMARK.md)**. Per-run numbers: [`results/RESULTS.md`](results/RESULTS.md).
 
@@ -53,12 +73,14 @@ Full analysis, per-check failure table, caveats: **[`BENCHMARK.md`](BENCHMARK.md
 ├── metrics.py                # turns / tokens / cost / timing from pi and Claude Code logs
 ├── summarize.py              # builds results/ from grades + logs
 ├── run_nemotron_arms.sh      # local arms A, B, B2, C (execution) — pi + llama-server
+├── run_qwen_arms.sh          # follow-up: the same arms with Qwen3.6 (QA, QB, QB2, QC)
 ├── run_claude_arms.sh        # Claude arms: D (Haiku) and C's planning step (Opus)
 ├── config/pi-models.json     # isolated pi provider config for the local llama-server
 ├── plans/
 │   ├── opus/                 # Opus 5.5's three TODO.md plans (arm C)
-│   └── nemotron/             # Nemotron's own initial TODO.md plans (B, B2)
-├── runs/<arm>-r<N>/          # every agent's output, as produced (15 runs)
+│   ├── nemotron/             # Nemotron's own initial TODO.md plans (B, B2)
+│   └── qwen/                 # Qwen3.6's own initial TODO.md plans (QB, QB2)
+├── runs/<arm>-r<N>/          # every agent's output, as produced (27 runs)
 ├── logs/                     # full agent transcripts (*.jsonl.gz), runner.log
 └── results/                  # grades.json, grades.txt, summary.json, RESULTS.md
 ```
@@ -86,6 +108,8 @@ sudo systemd-run --unit=llama-nemotron --uid=$USER \
 
 `run_nemotron_arms.sh` restarts the `llama-nemotron` unit before each run.
 
+For the Qwen follow-up, download `unsloth/Qwen3.6-35B-A3B-GGUF` → `Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf`. `run_qwen_arms.sh` starts its own `llama-qwen` unit with the same flags as above, except the model, alias and v1's Qwen sampling (`--temp 0.6 --top-p 0.95 --top-k 20`).
+
 ### 2. Agents
 
 ```bash
@@ -103,6 +127,7 @@ Both sides expect a venv with Python 3.12 and `pytest==7.4.4`: `.venv/` on the l
 ./run_claude_arms.sh                 # Haiku x3 (arm D) + Opus plans x3 (arm C, planning step)
 # copy runs/opusplan-r{1,2,3}/ to ~/llama-bench-v2/opus-plans/ on the GPU box, then:
 ./run_nemotron_arms.sh A B B2 C      # 3 reps each; 25-min timeout per phase
+./run_qwen_arms.sh                   # QA QB QB2 QC, same protocol (QC uses the same opus-plans/)
 ```
 
 ### 4. Grade and summarize
@@ -120,6 +145,8 @@ python3 summarize.py > results/RESULTS.md
 - Haiku ran in Claude Code and Nemotron in pi (as in v1), so tools, system prompt and thinking defaults differ. Nemotron ran with thinking **off**, mirroring v1.
 - The Claude arms ran from a MacBook, since Claude Code on the GPU box was logged out during the unattended run. Their outputs were graded on the GPU box.
 - The spec's `[ID] [x|·] title` is ambiguous. See BENCHMARK.md for scores with those checks dropped.
+- Qwen's quant (UD-Q4_K_XL, 22.4 GB) is larger than Nemotron's (IQ4_XS, 18.9 GB), and each model used its own vendor-recommended sampling. The Qwen arms ran the morning after the Nemotron arms, on the same box and builds.
+- **Runs were not sandboxed from each other.** In one run (Nemotron B2-r2, 16/19) the agent searched the benchmark folder during planning and read another run's finished `todo.py`, `TODO.md` and tests (Nemotron B-r3, also 16/19). That run is kept in the tables; excluding it, B2's mean is 16.5. Three Qwen runs ran a similar `find` for `SPEC.md`/`TODO.md` but read nothing from other runs. No Claude run left its own directory.
 - The B2 arm and the grader's ID check were added or tightened mid-run, after the first results came in. Both are documented in BENCHMARK.md.
 
 ## License
