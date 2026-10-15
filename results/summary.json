@@ -1,0 +1,365 @@
+[
+  {
+    "arm": "A",
+    "label": "Nemotron, no planning",
+    "runs": 3,
+    "scores": [
+      15,
+      16,
+      17
+    ],
+    "mean_score": 16,
+    "median_wall_s": 327.7,
+    "mean_turns": 37.7,
+    "timeouts": 0,
+    "spend_usd": 0,
+    "runs_detail": [
+      {
+        "run": "nemotron-r1",
+        "score": 15,
+        "total": 19,
+        "tests": 5,
+        "loc": 145,
+        "failed": [
+          "tests don't pollute cwd",
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`",
+          "IDs never reused after rm"
+        ],
+        "wall_s": 327.7,
+        "turns": 48,
+        "out_tok": 11899,
+        "cost": 0.0,
+        "timeouts": 0
+      },
+      {
+        "run": "nemotron-r2",
+        "score": 16,
+        "total": 19,
+        "tests": 4,
+        "loc": 142,
+        "failed": [
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`",
+          "IDs never reused after rm"
+        ],
+        "wall_s": 205.9,
+        "turns": 32,
+        "out_tok": 7645,
+        "cost": 0.0,
+        "timeouts": 0
+      },
+      {
+        "run": "nemotron-r3",
+        "score": 17,
+        "total": 19,
+        "tests": 10,
+        "loc": 200,
+        "failed": [
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`"
+        ],
+        "wall_s": 389.7,
+        "turns": 33,
+        "out_tok": 14594,
+        "cost": 0.0,
+        "timeouts": 0
+      }
+    ]
+  },
+  {
+    "arm": "B",
+    "label": "Nemotron plans (skill file) \u2192 Nemotron executes",
+    "runs": 3,
+    "scores": [
+      16,
+      15,
+      16
+    ],
+    "mean_score": 15.7,
+    "median_wall_s": 720.7,
+    "mean_turns": 305,
+    "timeouts": 2,
+    "spend_usd": 0,
+    "runs_detail": [
+      {
+        "run": "nemotron-plan-r1",
+        "score": 16,
+        "total": 19,
+        "tests": 5,
+        "loc": 152,
+        "failed": [
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`",
+          "IDs never reused after rm"
+        ],
+        "wall_s": 124.9,
+        "plan_wall_s": 117.6,
+        "turns": 23,
+        "plan_turns": 20,
+        "out_tok": 4095,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": false,
+        "todo_written": false,
+        "code_in_plan_phase": null
+      },
+      {
+        "run": "nemotron-plan-r2",
+        "score": 15,
+        "total": 19,
+        "tests": 5,
+        "loc": 144,
+        "failed": [
+          "tests don't pollute cwd",
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`",
+          "IDs never reused after rm"
+        ],
+        "wall_s": 3000.0,
+        "plan_wall_s": 1500.0,
+        "turns": 786,
+        "plan_turns": 393,
+        "out_tok": 73936,
+        "cost": 0.0,
+        "timeouts": 2,
+        "skill_read": false,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      },
+      {
+        "run": "nemotron-plan-r3",
+        "score": 16,
+        "total": 19,
+        "tests": 5,
+        "loc": 166,
+        "failed": [
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`",
+          "IDs never reused after rm"
+        ],
+        "wall_s": 720.7,
+        "plan_wall_s": 709.4,
+        "turns": 106,
+        "plan_turns": 103,
+        "out_tok": 25541,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": false,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      }
+    ]
+  },
+  {
+    "arm": "B2",
+    "label": "Nemotron plans (skill inlined in prompt) \u2192 Nemotron executes",
+    "runs": 3,
+    "scores": [
+      18,
+      16,
+      15
+    ],
+    "mean_score": 16.3,
+    "median_wall_s": 282.4,
+    "mean_turns": 57.3,
+    "timeouts": 0,
+    "spend_usd": 0,
+    "runs_detail": [
+      {
+        "run": "nemotron-planinline-r1",
+        "score": 18,
+        "total": 19,
+        "tests": 5,
+        "loc": 157,
+        "failed": [
+          "IDs never reused after rm"
+        ],
+        "wall_s": 483.4,
+        "plan_wall_s": 26.3,
+        "turns": 81,
+        "plan_turns": 6,
+        "out_tok": 15448,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": false,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      },
+      {
+        "run": "nemotron-planinline-r2",
+        "score": 16,
+        "total": 19,
+        "tests": 5,
+        "loc": 166,
+        "failed": [
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`",
+          "IDs never reused after rm"
+        ],
+        "wall_s": 219.0,
+        "plan_wall_s": 48.1,
+        "turns": 46,
+        "plan_turns": 12,
+        "out_tok": 7260,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": false,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      },
+      {
+        "run": "nemotron-planinline-r3",
+        "score": 15,
+        "total": 19,
+        "tests": 9,
+        "loc": 135,
+        "failed": [
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`",
+          "IDs never reused after rm",
+          "README.md with usage examples"
+        ],
+        "wall_s": 282.4,
+        "plan_wall_s": 31.6,
+        "turns": 45,
+        "plan_turns": 7,
+        "out_tok": 9397,
+        "cost": 0.0,
+        "timeouts": 0,
+        "skill_read": false,
+        "todo_written": true,
+        "code_in_plan_phase": null
+      }
+    ]
+  },
+  {
+    "arm": "C",
+    "label": "Opus 5.5 plans \u2192 Nemotron executes",
+    "runs": 3,
+    "scores": [
+      19,
+      12,
+      19
+    ],
+    "mean_score": 16.7,
+    "median_wall_s": 261.7,
+    "mean_turns": 47.7,
+    "timeouts": 0,
+    "spend_usd": 0.426,
+    "runs_detail": [
+      {
+        "run": "opusplan-nemotron-r1",
+        "score": 19,
+        "total": 19,
+        "tests": 9,
+        "loc": 239,
+        "failed": [],
+        "wall_s": 261.7,
+        "plan_wall_s": 33.0,
+        "turns": 15,
+        "plan_turns": 3,
+        "out_tok": 8065,
+        "cost": 0.1562868,
+        "timeouts": 0,
+        "todo_checked": "2/26"
+      },
+      {
+        "run": "opusplan-nemotron-r2",
+        "score": 12,
+        "total": 19,
+        "tests": 9,
+        "loc": 217,
+        "failed": [
+          "add prints new ID",
+          "persists to ./todos.json (cwd)",
+          "list format `[ID] [\u00b7] title`",
+          "done marks `[x]`",
+          "IDs never reused after rm",
+          "clear removes done todos only",
+          "schema {id:int, title:str, done:bool}"
+        ],
+        "wall_s": 1484.1,
+        "plan_wall_s": 27.3,
+        "turns": 112,
+        "plan_turns": 3,
+        "out_tok": 48104,
+        "cost": 0.13540620000000003,
+        "timeouts": 0,
+        "todo_checked": "0/25"
+      },
+      {
+        "run": "opusplan-nemotron-r3",
+        "score": 19,
+        "total": 19,
+        "tests": 8,
+        "loc": 214,
+        "failed": [],
+        "wall_s": 215.6,
+        "plan_wall_s": 30.4,
+        "turns": 16,
+        "plan_turns": 3,
+        "out_tok": 6666,
+        "cost": 0.1344718,
+        "timeouts": 0,
+        "todo_checked": "0/21"
+      }
+    ]
+  },
+  {
+    "arm": "D",
+    "label": "Haiku 5.5, no planning",
+    "runs": 3,
+    "scores": [
+      19,
+      19,
+      19
+    ],
+    "mean_score": 19,
+    "median_wall_s": 38.1,
+    "mean_turns": 8,
+    "timeouts": 0,
+    "spend_usd": 0.028,
+    "runs_detail": [
+      {
+        "run": "haiku-r1",
+        "score": 19,
+        "total": 19,
+        "tests": 15,
+        "loc": 168,
+        "failed": [],
+        "wall_s": 42.5,
+        "turns": 7,
+        "out_tok": 7396,
+        "cost": 0.01061712,
+        "timeouts": 0
+      },
+      {
+        "run": "haiku-r2",
+        "score": 19,
+        "total": 19,
+        "tests": 11,
+        "loc": 171,
+        "failed": [],
+        "wall_s": 37.7,
+        "turns": 8,
+        "out_tok": 9316,
+        "cost": 0.00854204,
+        "timeouts": 0
+      },
+      {
+        "run": "haiku-r3",
+        "score": 19,
+        "total": 19,
+        "tests": 11,
+        "loc": 198,
+        "failed": [],
+        "wall_s": 38.1,
+        "turns": 9,
+        "out_tok": 9189,
+        "cost": 0.00914708,
+        "timeouts": 0
+      }
+    ]
+  }
+]

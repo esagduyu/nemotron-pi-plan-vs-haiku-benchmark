@@ -1,0 +1,20 @@
+nemotron-r1 exit=0 wall=327.7s
+nemotron-plan-r1:plan exit=0 wall=117.6s
+nemotron-plan-r1:exec exit=0 wall=7.3s
+opusplan-nemotron-r1:exec exit=0 wall=228.7s
+nemotron-r2 exit=0 wall=205.9s
+nemotron-plan-r2:plan exit=124 wall=1500.0s
+nemotron-plan-r2:exec exit=124 wall=1500.0s
+opusplan-nemotron-r2:exec exit=0 wall=1456.8s
+nemotron-r3 exit=0 wall=389.7s
+nemotron-plan-r3:plan exit=0 wall=709.4s
+nemotron-plan-r3:exec exit=0 wall=11.3s
+opusplan-nemotron-r3:exec exit=0 wall=185.2s
+ALL_NEMOTRON_ARMS_DONE
+nemotron-planinline-r1:plan exit=0 wall=26.3s
+nemotron-planinline-r1:exec exit=0 wall=457.1s
+nemotron-planinline-r2:plan exit=0 wall=48.1s
+nemotron-planinline-r2:exec exit=0 wall=170.9s
+nemotron-planinline-r3:plan exit=0 wall=31.6s
+nemotron-planinline-r3:exec exit=0 wall=250.8s
+ALL_NEMOTRON_ARMS_DONE

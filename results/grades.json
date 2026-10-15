@@ -1,0 +1,1412 @@
+[
+  {
+    "run": "runs/haiku-r1",
+    "score": "19/19",
+    "passed": 19,
+    "total": 19,
+    "failed": {},
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "15 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "15 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": true,
+        "note": "[1] [\u00b7] first | [2] [\u00b7] second"
+      },
+      "done marks `[x]`": {
+        "ok": true,
+        "note": "[1] [x] first | [2] [\u00b7] second"
+      },
+      "IDs never reused after rm": {
+        "ok": true,
+        "note": "ids 1,2 then rm 2 -> 3"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[3] [\u00b7] third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "dict with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 15,
+    "runtime_loc": 168,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/haiku-r2",
+    "score": "19/19",
+    "passed": 19,
+    "total": 19,
+    "failed": {},
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "11 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "11 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": true,
+        "note": "[1] [\u00b7] first | [2] [\u00b7] second"
+      },
+      "done marks `[x]`": {
+        "ok": true,
+        "note": "[1] [x] first | [2] [\u00b7] second"
+      },
+      "IDs never reused after rm": {
+        "ok": true,
+        "note": "ids 1,2 then rm 2 -> 3"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[3] [\u00b7] third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "dict with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 11,
+    "runtime_loc": 171,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/haiku-r3",
+    "score": "19/19",
+    "passed": 19,
+    "total": 19,
+    "failed": {},
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "11 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "11 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": true,
+        "note": "[1] [\u00b7] first | [2] [\u00b7] second"
+      },
+      "done marks `[x]`": {
+        "ok": true,
+        "note": "[1] [x] first | [2] [\u00b7] second"
+      },
+      "IDs never reused after rm": {
+        "ok": true,
+        "note": "ids 1,2 then rm 2 -> 3"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[3] [\u00b7] third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "dict with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 11,
+    "runtime_loc": 198,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-planinline-r1",
+    "score": "18/19",
+    "passed": 18,
+    "total": 19,
+    "failed": {
+      "IDs never reused after rm": "ids 1,2 then rm 2 -> 2"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "5 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "5 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": true,
+        "note": "[1] [\u00b7] first | [2] [\u00b7] second"
+      },
+      "done marks `[x]`": {
+        "ok": true,
+        "note": "[1] [x] first | [2] [\u00b7] second"
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids 1,2 then rm 2 -> 2"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[2] [\u00b7] third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 5,
+    "runtime_loc": 157,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-planinline-r2",
+    "score": "16/19",
+    "passed": 16,
+    "total": 19,
+    "failed": {
+      "list format `[ID] [\u00b7] title`": "[1] \u00b7 first | [3] \u00b7 second",
+      "done marks `[x]`": "[1] x first | [3] \u00b7 second",
+      "IDs never reused after rm": "ids 1,3 then rm 3 -> 3"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "5 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "5 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": "[1] \u00b7 first | [3] \u00b7 second"
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": "[1] x first | [3] \u00b7 second"
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids 1,3 then rm 3 -> 3"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[3] \u00b7 third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 5,
+    "runtime_loc": 166,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-planinline-r3",
+    "score": "15/19",
+    "passed": 15,
+    "total": 19,
+    "failed": {
+      "list format `[ID] [\u00b7] title`": "[1] \u00b7 first | [2] \u00b7 second",
+      "done marks `[x]`": "[1] x first | [2] \u00b7 second",
+      "IDs never reused after rm": "ids 1,2 then rm 2 -> 2",
+      "README.md with usage examples": ""
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "9 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "9 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": "[1] \u00b7 first | [2] \u00b7 second"
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": "[1] x first | [2] \u00b7 second"
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids 1,2 then rm 2 -> 2"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[2] \u00b7 third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": false,
+        "note": ""
+      }
+    },
+    "tests": 9,
+    "runtime_loc": 135,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-plan-r1",
+    "score": "16/19",
+    "passed": 16,
+    "total": 19,
+    "failed": {
+      "list format `[ID] [\u00b7] title`": "[1] \u00b7 first | [2] \u00b7 second",
+      "done marks `[x]`": "[1] x first | [2] \u00b7 second",
+      "IDs never reused after rm": "ids 1,2 then rm 2 -> 2"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "5 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "5 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": "[1] \u00b7 first | [2] \u00b7 second"
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": "[1] x first | [2] \u00b7 second"
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids 1,2 then rm 2 -> 2"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[2] \u00b7 third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 5,
+    "runtime_loc": 152,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-plan-r2",
+    "score": "15/19",
+    "passed": 15,
+    "total": 19,
+    "failed": {
+      "tests don't pollute cwd": "todos.json left in project dir",
+      "list format `[ID] [\u00b7] title`": "[1] \u00b7 first | [2] \u00b7 second",
+      "done marks `[x]`": "[1] x first | [2] \u00b7 second",
+      "IDs never reused after rm": "ids 1,2 then rm 2 -> 2"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "5 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "5 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": false,
+        "note": "todos.json left in project dir"
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": "[1] \u00b7 first | [2] \u00b7 second"
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": "[1] x first | [2] \u00b7 second"
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids 1,2 then rm 2 -> 2"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[2] \u00b7 third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 5,
+    "runtime_loc": 144,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-plan-r3",
+    "score": "16/19",
+    "passed": 16,
+    "total": 19,
+    "failed": {
+      "list format `[ID] [\u00b7] title`": "[1] \u00b7 first | [3] \u00b7 second",
+      "done marks `[x]`": "[1] x first | [3] \u00b7 second",
+      "IDs never reused after rm": "ids 1,3 then rm 3 -> 3"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "5 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "5 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": "[1] \u00b7 first | [3] \u00b7 second"
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": "[1] x first | [3] \u00b7 second"
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids 1,3 then rm 3 -> 3"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[3] \u00b7 third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 5,
+    "runtime_loc": 166,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-r1",
+    "score": "15/19",
+    "passed": 15,
+    "total": 19,
+    "failed": {
+      "tests don't pollute cwd": "todos.json left in project dir",
+      "list format `[ID] [\u00b7] title`": "[1] \u00b7 first | [1] \u00b7 second",
+      "done marks `[x]`": "[1] x first | [1] \u00b7 second",
+      "IDs never reused after rm": "ids 1,1 then rm 1 -> 1"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "5 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "5 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": false,
+        "note": "todos.json left in project dir"
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": "[1] \u00b7 first | [1] \u00b7 second"
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": "[1] x first | [1] \u00b7 second"
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids 1,1 then rm 1 -> 1"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[1] \u00b7 third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 5,
+    "runtime_loc": 145,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-r2",
+    "score": "16/19",
+    "passed": 16,
+    "total": 19,
+    "failed": {
+      "list format `[ID] [\u00b7] title`": "[1] \u00b7 first | [2] \u00b7 second",
+      "done marks `[x]`": "[1] x first | [2] \u00b7 second",
+      "IDs never reused after rm": "ids 1,2 then rm 2 -> 2"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "4 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "4 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": "[1] \u00b7 first | [2] \u00b7 second"
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": "[1] x first | [2] \u00b7 second"
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids 1,2 then rm 2 -> 2"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[2] \u00b7 third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 4,
+    "runtime_loc": 142,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/nemotron-r3",
+    "score": "17/19",
+    "passed": 17,
+    "total": 19,
+    "failed": {
+      "list format `[ID] [\u00b7] title`": "[1] \u00b7 first | [2] \u00b7 second",
+      "done marks `[x]`": "[1] x first | [2] \u00b7 second"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "10 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "10 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": "[1] \u00b7 first | [2] \u00b7 second"
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": "[1] x first | [2] \u00b7 second"
+      },
+      "IDs never reused after rm": {
+        "ok": true,
+        "note": "ids 1,2 then rm 2 -> 3"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[3] \u00b7 third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "list with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 10,
+    "runtime_loc": 200,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/opusplan-nemotron-r1",
+    "score": "19/19",
+    "passed": 19,
+    "total": 19,
+    "failed": {},
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "9 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "9 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": true,
+        "note": "[1] [\u00b7] first | [2] [\u00b7] second"
+      },
+      "done marks `[x]`": {
+        "ok": true,
+        "note": "[1] [x] first | [2] [\u00b7] second"
+      },
+      "IDs never reused after rm": {
+        "ok": true,
+        "note": "ids 1,2 then rm 2 -> 3"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[3] [\u00b7] third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "dict with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 9,
+    "runtime_loc": 239,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/opusplan-nemotron-r2",
+    "score": "12/19",
+    "passed": 12,
+    "total": 19,
+    "failed": {
+      "add prints new ID": "",
+      "persists to ./todos.json (cwd)": "not in cwd",
+      "list format `[ID] [\u00b7] title`": "",
+      "done marks `[x]`": "",
+      "IDs never reused after rm": "ids None,None then rm None -> None",
+      "clear removes done todos only": "",
+      "schema {id:int, title:str, done:bool}": "unreadable: FileNotFoundError"
+    },
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "9 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "9 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": false,
+        "note": ""
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": false,
+        "note": "not in cwd"
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": false,
+        "note": ""
+      },
+      "done marks `[x]`": {
+        "ok": false,
+        "note": ""
+      },
+      "IDs never reused after rm": {
+        "ok": false,
+        "note": "ids None,None then rm None -> None"
+      },
+      "clear removes done todos only": {
+        "ok": false,
+        "note": ""
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": false,
+        "note": "unreadable: FileNotFoundError"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 9,
+    "runtime_loc": 217,
+    "files": [
+      "tests/conftest.py",
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  },
+  {
+    "run": "runs/opusplan-nemotron-r3",
+    "score": "19/19",
+    "passed": 19,
+    "total": 19,
+    "failed": {},
+    "checks": {
+      "entrypoint todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      "tests/test_todo.py exists": {
+        "ok": true,
+        "note": ""
+      },
+      ">= 4 tests": {
+        "ok": true,
+        "note": "8 test functions"
+      },
+      "tests cover add/list/done/rm": {
+        "ok": true,
+        "note": ""
+      },
+      "agent's pytest suite passes": {
+        "ok": true,
+        "note": "8 passed"
+      },
+      "tests don't pollute cwd": {
+        "ok": true,
+        "note": ""
+      },
+      "add prints new ID": {
+        "ok": true,
+        "note": "1"
+      },
+      "persists to ./todos.json (cwd)": {
+        "ok": true,
+        "note": ""
+      },
+      "list format `[ID] [\u00b7] title`": {
+        "ok": true,
+        "note": "[1] [\u00b7] first | [2] [\u00b7] second"
+      },
+      "done marks `[x]`": {
+        "ok": true,
+        "note": "[1] [x] first | [2] [\u00b7] second"
+      },
+      "IDs never reused after rm": {
+        "ok": true,
+        "note": "ids 1,2 then rm 2 -> 3"
+      },
+      "clear removes done todos only": {
+        "ok": true,
+        "note": "[3] [\u00b7] third"
+      },
+      "schema {id:int, title:str, done:bool}": {
+        "ok": true,
+        "note": "dict with 1 items"
+      },
+      "missing ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "missing ID on rm: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 1"
+      },
+      "non-numeric ID: stderr + nonzero exit, no traceback": {
+        "ok": true,
+        "note": "exit 2"
+      },
+      "uses argparse": {
+        "ok": true,
+        "note": ""
+      },
+      "stdlib-only runtime": {
+        "ok": true,
+        "note": ""
+      },
+      "README.md with usage examples": {
+        "ok": true,
+        "note": ""
+      }
+    },
+    "tests": 8,
+    "runtime_loc": 214,
+    "files": [
+      "tests/test_todo.py",
+      "todo.py"
+    ]
+  }
+]

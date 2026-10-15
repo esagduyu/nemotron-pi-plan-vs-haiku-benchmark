@@ -1,0 +1,49 @@
+ 19/19  runs/haiku-r1  tests=15 loc=168
+ 19/19  runs/haiku-r2  tests=11 loc=171
+ 19/19  runs/haiku-r3  tests=11 loc=198
+ 18/19  runs/nemotron-planinline-r1  tests=5 loc=157
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 16/19  runs/nemotron-planinline-r2  tests=5 loc=166
+        ✗ list format `[ID] [·] title` — [1] · first | [3] · second
+        ✗ done marks `[x]` — [1] x first | [3] · second
+        ✗ IDs never reused after rm — ids 1,3 then rm 3 -> 3
+ 15/19  runs/nemotron-planinline-r3  tests=9 loc=135
+        ✗ list format `[ID] [·] title` — [1] · first | [2] · second
+        ✗ done marks `[x]` — [1] x first | [2] · second
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+        ✗ README.md with usage examples
+ 16/19  runs/nemotron-plan-r1  tests=5 loc=152
+        ✗ list format `[ID] [·] title` — [1] · first | [2] · second
+        ✗ done marks `[x]` — [1] x first | [2] · second
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 15/19  runs/nemotron-plan-r2  tests=5 loc=144
+        ✗ tests don't pollute cwd — todos.json left in project dir
+        ✗ list format `[ID] [·] title` — [1] · first | [2] · second
+        ✗ done marks `[x]` — [1] x first | [2] · second
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 16/19  runs/nemotron-plan-r3  tests=5 loc=166
+        ✗ list format `[ID] [·] title` — [1] · first | [3] · second
+        ✗ done marks `[x]` — [1] x first | [3] · second
+        ✗ IDs never reused after rm — ids 1,3 then rm 3 -> 3
+ 15/19  runs/nemotron-r1  tests=5 loc=145
+        ✗ tests don't pollute cwd — todos.json left in project dir
+        ✗ list format `[ID] [·] title` — [1] · first | [1] · second
+        ✗ done marks `[x]` — [1] x first | [1] · second
+        ✗ IDs never reused after rm — ids 1,1 then rm 1 -> 1
+ 16/19  runs/nemotron-r2  tests=4 loc=142
+        ✗ list format `[ID] [·] title` — [1] · first | [2] · second
+        ✗ done marks `[x]` — [1] x first | [2] · second
+        ✗ IDs never reused after rm — ids 1,2 then rm 2 -> 2
+ 17/19  runs/nemotron-r3  tests=10 loc=200
+        ✗ list format `[ID] [·] title` — [1] · first | [2] · second
+        ✗ done marks `[x]` — [1] x first | [2] · second
+ 19/19  runs/opusplan-nemotron-r1  tests=9 loc=239
+ 12/19  runs/opusplan-nemotron-r2  tests=9 loc=217
+        ✗ add prints new ID
+        ✗ persists to ./todos.json (cwd) — not in cwd
+        ✗ list format `[ID] [·] title`
+        ✗ done marks `[x]`
+        ✗ IDs never reused after rm — ids None,None then rm None -> None
+        ✗ clear removes done todos only
+        ✗ schema {id:int, title:str, done:bool} — unreadable: FileNotFoundError
+ 19/19  runs/opusplan-nemotron-r3  tests=8 loc=214
